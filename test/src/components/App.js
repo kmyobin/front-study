@@ -3,6 +3,7 @@ import BoardPage from './views/BoardPage/BoardPage';
 import ArticlePage from "./views/ArticlePage/ArticlePage";
 import RegisterPage from "./views/RegisterPage/RegisterPage";
 import React from "react";
+import "../App.css"
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
           <Route exact path="/" component={BoardPage} />
           <Route exact path="/article/:articleId" component={ArticlePage}/>
           <Route exact path="/register" component={RegisterPage}/>
-        
+          <Route exact path ="/edit/:articleId" component={RegisterPage}/>
         
         </Switch>
       

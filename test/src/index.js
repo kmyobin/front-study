@@ -3,16 +3,17 @@ import App from './components/App';
 import reportWebVitals from './reportWebVitals';
 import ReactDOM from 'react-dom'
 import { BrowserRouter } from 'react-router-dom';
+import {Router} from "react-router";
 import store from "./store";
 import {Provider} from "react-redux";
+import history from "./utils/history";
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
       <App/>
-    </BrowserRouter>
-  </Provider>
-  ,
+    </Router>
+  </Provider>,
   document.getElementById("root")
 );
 //const root = ReactDOM.createRoot(document.getElementById('root'));

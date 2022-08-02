@@ -1,30 +1,74 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import RegisterOrEdit from './Sections/RegisterOrEdit';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector, shallowEqual} from "react-redux";
 import {articleActions} from "../../../slice/articleSlice";
 
-function RegisterPage() {
-  const [TitleValue, setTitleValue] = useState("")
-  const [ContentValue, setContentValue] = useState("")
-  const [IsForUpdate, setIsForUpdate] = useState(false)
-
+function RegisterPage(props) {  
   const dispatch = useDispatch();
+
+  const { id, views, date, editDate, title, content } = useSelector(
+    (state) => ({
+      id: state.articleReducers.id,
+      views: state.articleReducers.views,
+      date: state.articleReducers.date,
+      editDate: state.articleReducers.editDate,
+      title: state.articleReducers.title,
+      content: state.articleReducers.content,
+    }),
+    shallowEqual
+  );
+
+  const [TitleValue, setTitleValue] = useState(title);
+  const [ContentValue, setContentValue] = useState(content);
+  const [IsForUpdate, setIsForUpdate] = useState(false);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(props.location.search);
+    if(searchParams.get("isForEdit") === "true"){
+      dispatch(articleActions.fetchArticle(props.match.params.articleId));
+      setIsForUpdate(true);
+    }
+    setTitleValue(title);
+    setContentValue(content);
+  }, [id]);
+
 
   const onTitleChange = (event) =>{
     setTitleValue(event.currentTarget.value);
   };
-  //console.log(TitleValue);
 
   const onContentChange = (event) => {
     setContentValue(event.currentTarget.value);
   };
-  //console.log(ContentValue);
 
   const onSubmitArticle = (event) => {
     event.preventDefault();
-    const article={title: TitleValue, content: ContentValue};
-    dispatch(articleActions.registerArticle(article));
+
+    if(TitleValue === "" || TitleValue === null || TitleValue === undefined){
+      alert("제목을 작성하십시오.");
+      return false;
+    }
+    if(ContentValue === "" || ContentValue === null || ContentValue === undefined){
+      alert("내용을 작성하십시오.");
+      return false;
+    }
+
+    const article={
+      id: id,
+      title: TitleValue, 
+      content: ContentValue, 
+      views: views,
+      date: date,
+      editDate: IsForUpdate ? Date.now() : editDate,
+    };
     //console.log(article);
+    if(IsForUpdate){
+      dispatch(articleActions.updateArticle(article));
+    }
+    else{
+      dispatch(articleActions.registerArticle(article));
+    }
+
   };
 
 
