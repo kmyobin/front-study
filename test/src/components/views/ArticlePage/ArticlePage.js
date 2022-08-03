@@ -8,20 +8,20 @@ import Comment from './Sections/Comment';
 import {commentActions} from "../../../slice/commentSlice";
 
 function ArticlePage({match, location}) {
-  //console.log(match.params.articleId);
   const dispatch = useDispatch();
 
-  const [CommentValue, setCommentValue] = useState("");
   useEffect(() => {
     dispatch(articleActions.getArticle(match.params.articleId));
     dispatch(commentActions.getComments(match.params.articleId)); // 댓글 목록 불러오기
   }, [match.params.articleId]);
+  
 
+  
   const {id, title, content, date} = useSelector((state) => ({
-    id: state.articleReducers.id,
-    title: state.articleReducers.title,
-    content: state.articleReducers.content,
-    date: state.articleReducers.date
+      id: state.articleReducers.id,
+      title: state.articleReducers.title,
+      content: state.articleReducers.content,
+      date: state.articleReducers.date
     }),
     shallowEqual
   );
@@ -30,6 +30,7 @@ function ArticlePage({match, location}) {
   const comments = useSelector((state) => state.commentReducers.comments); // 
   console.log(comments);    
 
+  const [CommentValue, setCommentValue] = useState("");
 
   const onCommentChange = (e) => {
     setCommentValue(e.currentTarget.value);
@@ -60,7 +61,9 @@ function ArticlePage({match, location}) {
     dispatch(articleActions.deleteArticle(id));
   };
 
-
+  const onDeleteComment = (commentId) => {
+    dispatch(commentActions.deleteComment(commentId));
+  };
 
   return (
     <div style={{width: "80%", margin: "3rem auto"}}>
@@ -80,12 +83,13 @@ function ArticlePage({match, location}) {
             />
           }
           loadComments={comments}
+          deleteComment={onDeleteComment}
         />
       </div>
       
     </div>
     
-  )
+  );
 }
 
-export default ArticlePage
+export default ArticlePage;

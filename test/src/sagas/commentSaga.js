@@ -6,7 +6,6 @@ import history from "../utils/history";
 export function* registerCommentAsync(action) {
   const data = action.payload;
 
-
   yield Axios.post(`http://localhost:3001/comment/`, data);
 
   history.go(0); // refresh
@@ -20,4 +19,11 @@ export function* getCommentsAsync(action){
   );
 
   yield put(commentActions.getCommentsAsync(response.data));
+}
+export function* deleteCommentAsync(action){
+  const commentId = action.payload;
+
+  yield Axios.delete(`http://localhost:3001/comment/${commentId}`);
+
+  history.go(0);
 }

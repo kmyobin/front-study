@@ -5,11 +5,11 @@ import { boardActions } from "../slice/boardSlice";
 import { getBoardAsync } from "./boardSaga";
 
 import { commentActions  } from "../slice/commentSlice";
-import {registerCommentAsync, getCommentsAsync} from "./commentSaga";
+import {registerCommentAsync, getCommentsAsync, deleteCommentAsync} from "./commentSaga";
 
 const { registerArticle, getArticle, fetchArticle, updateArticle, deleteArticle } = articleActions;
 const {getBoard} = boardActions;
-const {registerComment, getComments} = commentActions;
+const {registerComment, getComments, deleteComment} = commentActions;
 
 export default function* rootWatcher() {
   yield takeLatest(registerArticle.type, registerArticleAsync);
@@ -20,4 +20,5 @@ export default function* rootWatcher() {
   yield takeLatest(deleteArticle.type, deleteArticleAsync);
   yield takeLatest(registerComment.type, registerCommentAsync);
   yield takeEvery(getComments.type, getCommentsAsync);
+  yield takeLatest(deleteComment.type, deleteCommentAsync); // 댓글 삭제 
 }

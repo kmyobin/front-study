@@ -4,7 +4,7 @@
       "id": 2,
       "title": "저도 반갑습니다",
       "content": "저는 고구마입니다",
-      "views": 4,
+      "views": 30,
       "date": 1659506849374,
       "editDate": ""
     },
@@ -12,7 +12,7 @@
       "id": 4,
       "title": "저도도도도 반갑습니다",
       "content": "저는 배추입니다",
-      "views": 5,
+      "views": 14,
       "date": 1659506859069,
       "editDate": ""
     },
@@ -20,22 +20,30 @@
       "id": 5,
       "title": "아 힘들어죽겟네",
       "content": "이 짓 언제까지 하냐?",
-      "views": 1,
+      "views": 3,
       "date": 1659510502717,
+      "editDate": ""
+    },
+    {
+      "id": 6,
+      "title": "찐찐최종",
+      "content": "진짜 마지막임 ㄹㅇ",
+      "views": 13,
+      "date": 1659516351271,
       "editDate": ""
     }
   ],
   "comment": [
     {
       "id": 1,
-      "content": "첫플 두근두근",
-      "date": 1659507130132,
-      "articleId": 4
+      "content": "댓글 확인",
+      "date": 1659517325236,
+      "articleId": 2
     },
     {
       "id": 2,
-      "content": "머어쩔티비",
-      "date": 1659510499368,
+      "content": "두개 호가인",
+      "date": 1659517330654,
       "articleId": 2
     }
   ]

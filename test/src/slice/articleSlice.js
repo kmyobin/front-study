@@ -44,6 +44,22 @@ export const articleSlice = createSlice({
       console.log("게시글 수정 액션 호출 -- updateArticle");
     },
 
+    changeRegisterInput: (state, {payload}) => {
+      switch(payload.name){
+        case "title":
+          return {
+            ...state,
+            title: payload.value,
+          };
+        case "content" :
+          return {
+            ...state,
+            content: payload.value,
+          };
+        default: break;
+      }
+    },
+
   },
 });
 

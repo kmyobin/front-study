@@ -1,5 +1,4 @@
 import React from 'react'
-import {Link} from "react-router-dom";
 import {Button, Input} from 'antd';
 
 const {TextArea} = Input;
@@ -7,7 +6,7 @@ const {TextArea} = Input;
 function RegisterOrEdit(props) {
   return (
     <div style={{width:"80%", margin:"3rem auto"}}>
-      <a href to="/">
+      <a href="/">
         <Button>←</Button>
       </a>
       <form onSubmit={props.handleSubmit}>
@@ -15,7 +14,7 @@ function RegisterOrEdit(props) {
         <div style={{width:"80%", margin:"2rem auto"}}>
           <label>Title: </label>
           <Input 
-            onChange ={props.handleTitleChange} 
+            onChange ={props.handleRegisterChange} 
             value={props.titleValue}
             type="text" 
             name="title" />
@@ -23,7 +22,7 @@ function RegisterOrEdit(props) {
         
           <TextArea 
             rows="30"
-            onChange={props.handleContentChange} 
+            onChange={props.handleRegisterChange} 
             value={props.contentValue} 
             name="content" />
         </div>

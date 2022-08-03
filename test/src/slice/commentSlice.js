@@ -23,6 +23,9 @@ export const commentSlice = createSlice({
         comments: list,
       };
     },
+    deleteComment: (state, {payload: id})=> {
+      console.log("댓글 삭제 액션 호출 -- deleteComments");
+    },
   },
 });
 

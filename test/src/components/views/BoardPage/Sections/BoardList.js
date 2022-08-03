@@ -3,8 +3,6 @@ import React from 'react'
 import {Link} from "react-router-dom";
 
 function BoardList(props) {
-  console.log(props.board);
-
   return (
     <div>
       <table style= {{width: "100%"}}>
@@ -26,12 +24,17 @@ function BoardList(props) {
           {props.board.map((article) => (
             <tr key = {article.id}>
               <td>{article.id}</td>
-              <Link to={`/article/${article.id}`}>
-                <td>{article.title}</td>
-              </Link>
+
+              <td onClick={() => props.handleArticleTitleClick(article.id)}>
+                {article.title}
+               
+                {props.commentLength[article.id] > 0 &&
+                  `[${props.commentLength[article.id]}]`}
+              </td>
+
               <td>{article.views}</td>
               <td>
-                <Button onClick={ () => props.hadnleDeleteClick(article.id)}>
+                <Button onClick={ () => props.handleDeleteClick(article.id)}>
                   X
                 </Button>
               </td>

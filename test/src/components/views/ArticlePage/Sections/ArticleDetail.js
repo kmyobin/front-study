@@ -36,21 +36,36 @@ function ArticleDetail(props) {
             </tr>
             <tr>
               <th>제목</th>
-              <td colspan="3">{props.title}</td>
+              <td colSpan="3">{props.title}</td>
             </tr>
             <tr>
               <th>내용</th>
-              <td colspan="3">{props.content}</td>
+              <td colSpan="3">{props.content}</td>
             </tr>            
           </tbody>
         </table>
       </div>
       <div>
-        {props.loadComments.map((comment) => (
-          <div>
+        {props.loadComments.length > 0 &&
+          props.loadComments.map((comment) => (
+          <div
+            style={{
+              width:"100%",
+              backgroundColor: "lightsteelblue",
+              border: "1px dotted black",
+            }}
+          >
             <span key={comment.id}>
               <span>{comment.content}</span>
-              <span>{new Date(comment.date).toLocaleString()}</span>
+              <span style = {{float: "right"}}>
+                {new Date(comment.date).toLocaleString()}&nbsp;
+              
+                <span 
+                  style={{cursor: "pointer"}}
+                  onClick={()=>props.deleteComment(comment.id)}>
+                  [X]
+                </span>
+              </span>
             </span>
           </div>
         ))}       
@@ -65,7 +80,7 @@ function ArticleDetail(props) {
       </div>
 
       <div style={{margin: "auto"}}>
-          <Button onClick={props.handleDeleteClick} type="danger">삭제</Button>
+          <Button onClick={props.handleDeleteClick}>삭제</Button>
       </div>
 
 
