@@ -53,6 +53,8 @@ function ArticleDetail(props) {
       <div style={{margin: "auto"}}>
           <Button onClick={props.handleDeleteClick} type="danger">삭제</Button>
       </div>
+
+      <div style={{margin:"2rem auto"}}>{props.handleComment}</div>
     </div>
   )
 }
