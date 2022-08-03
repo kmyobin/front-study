@@ -1,4 +1,4 @@
-import { call, put } from "redux-saga/effects";
+import { put } from "redux-saga/effects";
 import Axios from "axios";
 import { boardActions } from "../slice/boardSlice";
 import { commentActions } from "../slice/commentSlice";

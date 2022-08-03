@@ -1,6 +1,7 @@
 import { Button } from 'antd';
 import React from 'react'
 import {Link} from "react-router-dom";
+import "./board.css";
 
 function BoardList(props) {
   return (

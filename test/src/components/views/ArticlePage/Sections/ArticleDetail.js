@@ -51,8 +51,9 @@ function ArticleDetail(props) {
           <div
             style={{
               width:"100%",
-              backgroundColor: "lightsteelblue",
-              border: "1px dotted black",
+              backgroundColor: "#FFFFFF",
+              border: "1px dashed black",
+              margin: "5px 1px 1px 5px"
             }}
           >
             <span key={comment.id}>
