@@ -6,13 +6,13 @@ const {TextArea} = Input;
 
 function RegisterOrEdit(props) {
   return (
-    <div style={{maxWidth:"700px", margin:"2rem auto"}}>
-      <Link to="/">
+    <div style={{width:"80%", margin:"3rem auto"}}>
+      <a href to="/">
         <Button>←</Button>
-      </Link>
+      </a>
       <form onSubmit={props.handleSubmit}>
         <br />
-        <div style={{maxWidth: "700px", margin: "2rem"}}>
+        <div style={{width:"80%", margin:"2rem auto"}}>
           <label>Title: </label>
           <Input 
             onChange ={props.handleTitleChange} 
@@ -22,11 +22,12 @@ function RegisterOrEdit(props) {
           <hr />
         
           <TextArea 
+            rows="30"
             onChange={props.handleContentChange} 
             value={props.contentValue} 
             name="content" />
         </div>
-        <Button type="danger" onClick={props.handleSubmit}>
+        <Button type="primary" onClick={props.handleSubmit}>
           {props.updateRequest ? "수정" : "등록"}
         </Button>
       </form>

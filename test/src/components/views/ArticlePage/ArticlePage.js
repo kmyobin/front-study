@@ -11,8 +11,10 @@ function ArticlePage({match, location}) {
   //console.log(match.params.articleId);
   const dispatch = useDispatch();
 
+  const [CommentValue, setCommentValue] = useState("");
   useEffect(() => {
     dispatch(articleActions.getArticle(match.params.articleId));
+    dispatch(commentActions.getComments(match.params.articleId)); // 댓글 목록 불러오기
   }, [match.params.articleId]);
 
   const {id, title, content, date} = useSelector((state) => ({
@@ -20,13 +22,14 @@ function ArticlePage({match, location}) {
     title: state.articleReducers.title,
     content: state.articleReducers.content,
     date: state.articleReducers.date
-  }),
-  shallowEqual
+    }),
+    shallowEqual
   );
 
   const views = useSelector((state) => state.articleReducers.views);
-    
-  const [CommentValue, setCommentValue] = useState("");
+  const comments = useSelector((state) => state.commentReducers.comments); // 
+  console.log(comments);    
+
 
   const onCommentChange = (e) => {
     setCommentValue(e.currentTarget.value);
@@ -57,7 +60,7 @@ function ArticlePage({match, location}) {
     dispatch(articleActions.deleteArticle(id));
   };
 
-  
+
 
   return (
     <div style={{width: "80%", margin: "3rem auto"}}>
@@ -76,6 +79,7 @@ function ArticlePage({match, location}) {
               handleCommentSubmit={onCommentSubmit}
             />
           }
+          loadComments={comments}
         />
       </div>
       

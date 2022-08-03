@@ -28,7 +28,7 @@ function BoardPage() {
   };
 
   return (
-    <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
+    <div style={{ width: "80%", margin: "3rem auto" }}>
       <div>
         <Link to="/register?isForEdit=false">
           <Button type="primary">New Post</Button>
@@ -41,7 +41,10 @@ function BoardPage() {
         {error ? (
           <h2>에러 발생: {error}</h2>
         ) : isSuccess && board.length > 0 ? (
-          <BoardList board={board} handleDeleteClick={onDeleteClick} />
+          <BoardList 
+            board={board} 
+            handleDeleteClick={onDeleteClick} 
+          />
         ) : isSuccess && board.length <= 0 ? (
           <p> 조회할 내용이 없습니다. </p>
         ) : (

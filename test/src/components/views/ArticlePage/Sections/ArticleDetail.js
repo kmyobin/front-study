@@ -23,27 +23,41 @@ function ArticleDetail(props) {
             <col width="10%" />
             <col width="40%" />
           </colgroup>
-          <tr>
-            <th>번호</th>
-            <td>{props.id}</td>
-            <th>조회수</th>
-            <td>{props.views}</td>
-          </tr>
-          <tr>
-            <th>날짜</th>
-            <td>{new Date(props.date).toLocaleString()}</td>
-          </tr>
-          <tr>
-            <th>제목</th>
-            <td colspan="3">{props.title}</td>
-          </tr>
-          <tr>
-            <th>내용</th>
-            <td colspan="3">{props.content}</td>
-          </tr>
+          <tbody>
+            <tr>
+              <th>번호</th>
+              <td>{props.id}</td>
+              <th>조회수</th>
+              <td>{props.views}</td>
+            </tr>
+            <tr>
+              <th>날짜</th>
+              <td>{new Date(props.date).toLocaleString()}</td>
+            </tr>
+            <tr>
+              <th>제목</th>
+              <td colspan="3">{props.title}</td>
+            </tr>
+            <tr>
+              <th>내용</th>
+              <td colspan="3">{props.content}</td>
+            </tr>            
+          </tbody>
         </table>
       </div>
-
+      <div>
+        {props.loadComments.map((comment) => (
+          <div>
+            <span key={comment.id}>
+              <span>{comment.content}</span>
+              <span>{new Date(comment.date).toLocaleString()}</span>
+            </span>
+          </div>
+        ))}       
+      </div>      
+      
+      <div style={{margin:"2rem auto"}}>{props.handleComment}</div>
+      
       <div style={{margin: "2rem auto"}}>
         <Link to={`/edit/${props.id}?isForEdit=true`}>
           <Button type="primary">수정</Button>
@@ -54,7 +68,9 @@ function ArticleDetail(props) {
           <Button onClick={props.handleDeleteClick} type="danger">삭제</Button>
       </div>
 
-      <div style={{margin:"2rem auto"}}>{props.handleComment}</div>
+
+
+
     </div>
   )
 }

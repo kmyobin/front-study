@@ -22,15 +22,12 @@ export function* updateArticleAsync(action){
     article
   );
 
-  alert("저장되었습니다.");
-
-  console.log(response.data.id);
+  alert("수정되었습니다.");
 
   history.push(`/article/${response.data.id}`, response.data.id);
 }
 
 export function* fetchArticleAsync(action){
-  console.log(action);
   const id = action.payload;
 
   const response = yield Axios.get(`http://localhost:3001/board/${id}`);
@@ -57,10 +54,6 @@ export function* registerArticleAsync(action){
   const response = yield Axios.post(`http://localhost:3001/board/`, data);
 
   alert("저장되었습니다.");
-
-  console.log(response.data.id);
-
-  //const history = yield getContext("history");
 
   history.push(`/article/${response.data.id}`, response.data.id);
 }

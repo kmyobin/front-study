@@ -14,7 +14,10 @@ export const commentSlice = createSlice({
     registerComment: (state, {payload: comment}) => {
       console.log("댓글 등록 액션 호출 -- registerComment");
     },
-    getCommentAsync: (state, {payload: list}) => {
+    getComments: (state, {payload: articleId}) => {
+      console.log("댓글 불러오기 액션 호출 -- getComments");
+    },
+    getCommentsAsync: (state, {payload: list}) => {
       return {
         ...state,
         comments: list,

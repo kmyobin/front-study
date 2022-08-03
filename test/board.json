@@ -4,7 +4,7 @@
       "id": 2,
       "title": "저도 반갑습니다",
       "content": "저는 고구마입니다",
-      "views": 2,
+      "views": 4,
       "date": 1659506849374,
       "editDate": ""
     },
@@ -15,6 +15,14 @@
       "views": 5,
       "date": 1659506859069,
       "editDate": ""
+    },
+    {
+      "id": 5,
+      "title": "아 힘들어죽겟네",
+      "content": "이 짓 언제까지 하냐?",
+      "views": 1,
+      "date": 1659510502717,
+      "editDate": ""
     }
   ],
   "comment": [
@@ -23,6 +31,12 @@
       "content": "첫플 두근두근",
       "date": 1659507130132,
       "articleId": 4
+    },
+    {
+      "id": 2,
+      "content": "머어쩔티비",
+      "date": 1659510499368,
+      "articleId": 2
     }
   ]
 }
